@@ -1,10 +1,15 @@
 RedditOnRails::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   devise_for :users
 
 	resources :pages
 	resources :links
 	resources :comments, :only => [:create]
+	resources :votes
+	resources :stars
+	
 	
 	root :to => "pages#index"
 

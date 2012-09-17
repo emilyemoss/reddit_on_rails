@@ -1,0 +1,50 @@
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  padding-top: 60px;
+}
+
+.pull-center {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vote_count {
+	margin: 0;
+	padding: 0;
+}
+
+.vote_count_up {
+	color: green;
+}
+
+.vote_count_down {
+	color: red;
+}
+
+a.not-starred:hover {
+	color: red;
+}
+
+a:hover > i.not-starred {
+	color: orange;
+	text-decoration: none;
+}
+
+a:hover > i.starred {
+	color: #AFAFAF;
+	text-decoration: none;
+}
+
+i.starred {
+	color: orange 
+}
+
+i.not-starred {
+	color: #AFAFAF
+}
+
+

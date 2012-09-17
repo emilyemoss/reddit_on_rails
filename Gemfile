@@ -8,16 +8,17 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'devise'
 gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '~> 0.0.8'
+gem 'font-awesome-rails', '0.4.0'
+gem 'rails_admin', '0.0.5'
+gem 'cancan', '1.6.8'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
+  gem 'sass-rails',   '~> 3.2.5'
+  gem 'bootstrap-sass', '~> 2.1.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
 
