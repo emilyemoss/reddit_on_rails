@@ -1,5 +1,5 @@
 class AdminAbility
-	include CanCan:ability
+	include CanCan::Ability
 	
 	def initialize(user)
 		if user && user.admin?

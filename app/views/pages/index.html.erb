@@ -1,29 +1,40 @@
 <h2>I am a homepage.</h2>
 <%= link_to "Add a link", new_link_path %>
 
-<div class="rating">
-	<span class="star">*</span>
-	<span class="star">*</span>
-</div>
-
 <%= will_paginate @links %>
 
   <% @links.each do |link| %>
     <div class="row">
     	<div class="span1">
-  			<%= link_to content_tag(:i, '', :class => "icon-chevron-up icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+				
   			<% if current_user.present? %>
+    		
     			<% if current_user.votes.where(:link_id => link.id, :up => true).present? %>
+    				<div class="voted_up">
+    				<%= link_to content_tag(:i, '', :class => "vote_up icon-chevron-up icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
     				<%= content_tag(:h4, link.votes.where(:up => true).count - link.votes.where(:up => false).count, :class => "vote_count vote_count_up") %>
+    				<%= link_to content_tag(:i, '', :class => "vote_down icon-chevron-down icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+    				</div>
 			  	<% elsif current_user.votes.where(:link_id => link.id, :up => false).present? %>
-    				<%= content_tag(:h4, link.votes.where(:up => false).count - link.votes.where(:up => false).count, :class => "vote_count vote_count_down") %>
+						<div class="voted_down">
+    				<%= link_to content_tag(:i, '', :class => "vote_up icon-chevron-up icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+    				<%= content_tag(:h4, link.votes.where(:up => true).count - link.votes.where(:up => false).count, :class => "vote_count vote_count_down") %>
+    				<%= link_to content_tag(:i, '', :class => "vote_down icon-chevron-down icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+    				</div>
     			<% else %>
-    				<%= content_tag(:h4, link.votes.where(:up => false).count - link.votes.where(:up => false).count, :class => "vote_count") %>				  
+    				<div class="voted_nil">
+    				<%= link_to content_tag(:i, '', :class => "vote_up icon-chevron-up icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+    				<%= content_tag(:h4, link.votes.where(:up => true).count - link.votes.where(:up => false).count, :class => "vote_count") %>
+    				<%= link_to content_tag(:i, '', :class => "vote_down icon-chevron-down icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+    				</div>
     			<% end %>
-				<% else %>
+ 				<% else %>
+					<div class="voted_nil">
+					<%= link_to content_tag(:i, '', :class => "vote_up icon-chevron-up icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
 					<%= content_tag(:h4, link.votes.where(:up => false).count - link.votes.where(:up => false).count, :class => "vote_count") %>				  
+					<%= link_to content_tag(:i, '', :class => "vote_down icon-chevron-down icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>   
+					</div>
 				<% end %>
-				<%= link_to content_tag(:i, '', :class => "icon-chevron-down icon-large pull-center"), votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>   
     	</div>
    		<div class="span11">
 				<%= link_to(link.title, link.url, target: '_blank') %>&nbsp;&nbsp;<small style="color: grey;"><em><%= link.url.split('/')[2] %></em></small><br>

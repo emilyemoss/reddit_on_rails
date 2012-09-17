@@ -12,18 +12,9 @@ body {
 	margin-right: auto;
 }
 
-.vote_count {
-	margin: 0;
-	padding: 0;
-}
 
-.vote_count_up {
-	color: green;
-}
 
-.vote_count_down {
-	color: red;
-}
+/*** STARRING Styles ***/
 
 a.not-starred:hover {
 	color: red;
@@ -48,3 +39,42 @@ i.not-starred {
 }
 
 
+/*** VOTING Styles ***/
+
+.vote_count {
+	margin: 0;
+	padding: 0;
+}
+
+.voted_up {
+	a > i.vote_up, .vote_count {
+		color: green;
+		text-decoration: none;
+	}
+	a > i.vote_down {
+		color: grey;
+	}
+	a:hover > i.vote_down {
+		color: red;
+	}		
+}
+
+.voted_nil {
+	a, .vote_count {
+		color: grey;
+		text-decoration: none;
+	}
+}
+		
+.voted_down {
+	a {
+		text-decoration: none;
+	}
+	a > i.vote_up {
+		color: grey;
+	}
+	a > i.vote_down, .vote_count {
+		color: red;
+	}
+}
+	
